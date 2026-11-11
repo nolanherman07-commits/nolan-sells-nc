@@ -40,12 +40,12 @@ AREAS = {
     intro="Huntersville is a fast-growing town in northern Mecklenburg County, just north of Charlotte and close to Lake Norman. It's a great fit if you want suburban neighborhoods, lake access, and an easy commute into the city.",
     facts=[("Mecklenburg", "County"), ("~20 min", "To Charlotte"), ("Lake Norman", "Nearby"), ("$XXX,XXX", "Median price*")],
     love=["Close to Lake Norman", "Newer neighborhoods and parks", "Easy commute to uptown Charlotte", "Shopping and dining along I-77"]),
-  "granite-falls": dict(name="Granite Falls", scene="mist", county="Caldwell County",
+  "granite-falls": dict(name="Granite Falls", scene="mist", county="Caldwell County", photo="images/granite-falls.jpg",
     short="Quiet living near Lake Rhodhiss, with room to grow and quick trips into town.",
     intro="Granite Falls is a friendly small town in Caldwell County along US-321, between Hickory and Lenoir. It's close to Lake Rhodhiss and Lake Hickory, and a great fit if you want more space and a slower pace without being far from town.",
     facts=[("Caldwell", "County"), ("~15 min", "To Hickory"), ("Lakes", "Rhodhiss & Hickory"), ("$XXX,XXX", "Median price*")],
     love=["Small-town community feel", "Close to lakes and the outdoors", "Larger lots and room to grow", "Quick drive to Hickory and Lenoir"]),
-  "charlotte": dict(name="Charlotte", scene="sunset", county="Mecklenburg County", photo="images/charlotte-skyline.jpg", video="charlotte",
+  "charlotte": dict(name="Charlotte", scene="sunset", county="Mecklenburg County", photo="images/charlotte-skyline.jpg", video="clt-skyline-day",
     short="North Carolina's largest city: uptown skyline, pro sports, and neighborhoods for every lifestyle.",
     intro="Charlotte is the largest city in North Carolina, with a busy uptown, pro football and basketball, great restaurants, and a huge range of neighborhoods. Whether you're relocating for work or want city energy with easy access to Lake Norman and the foothills, I'll help you find the right fit.",
     facts=[("Mecklenburg", "County"), ("~1 hr", "To Hickory"), ("Largest", "City in NC"), ("$XXX,XXX", "Median price*")],
@@ -76,6 +76,11 @@ AREAS = {
     intro="Denver sits on the western shore of Lake Norman in eastern Lincoln County. It's one of the fastest-growing spots in the region, with waterfront and water-access homes, newer neighborhoods, and NC-16 running straight into Charlotte.",
     facts=[("Lincoln", "County"), ("~35 min", "To Charlotte"), ("Lake Norman", "West shore"), ("NC-16", "Straight to Charlotte")],
     love=["Lake Norman boating and waterfront homes", "Newer neighborhoods and amenities", "Direct NC-16 commute into Charlotte", "Quieter side of the lake"]),
+  "lake-norman": dict(name="Lake Norman", scene="dawn", county="Mecklenburg, Iredell, Catawba & Lincoln", photo="images/lake-norman.jpg",
+    short="North Carolina's largest lake, with waterfront homes, marinas and an easy commute to Charlotte.",
+    intro="Lake Norman is the largest man-made lake in North Carolina, with over 500 miles of shoreline across four counties. Towns like Mooresville, Cornelius, Davidson, Huntersville, Denver and Sherrills Ford surround it, so you can find everything from waterfront estates to lake-access neighborhoods, all within reach of Charlotte and Hickory.",
+    facts=[("4", "Counties"), ("500+ mi", "Of shoreline"), ("~35 min", "To Charlotte"), ("~35 min", "To Hickory")],
+    love=["Boating, swimming and waterfront dining", "Waterfront and lake-access homes", "Towns all around the lake to choose from", "Easy I-77 commute to Charlotte"]),
   "sherrills-ford": dict(name="Sherrills Ford", scene="dawn", county="Catawba County",
     short="Lake Norman living on the Catawba County side of the lake.",
     intro="Sherrills Ford is a lakeside community in southeastern Catawba County on Lake Norman's northwest shore. It's popular with buyers who want lake life, golf and bigger lots, with Hickory, Mooresville and Charlotte all within reach.",
@@ -104,10 +109,10 @@ AREAS = {
 }
 # Order of towns from Hickory toward Charlotte (used for "Nearby areas" and the relocation page)
 CORRIDOR = ["granite-falls", "hickory", "conover", "newton", "claremont", "maiden", "statesville", "lincolnton",
-            "sherrills-ford", "denver", "mooresville", "davidson", "cornelius", "huntersville", "charlotte"]
-HOME_AREAS = ["hickory", "conover", "granite-falls", "huntersville", "charlotte"]
+            "lake-norman", "sherrills-ford", "denver", "mooresville", "davidson", "cornelius", "huntersville", "charlotte"]
+HOME_AREAS = ["hickory", "conover", "granite-falls", "lake-norman", "charlotte"]
 # Drive times from each town (approximate, normal traffic)
-DRIVE = {"granite-falls": ("~15 min", "~1 hr 10 min"), "hickory": ("—", "~1 hr"), "conover": ("~10 min", "~55 min"),
+DRIVE = {"lake-norman": ("~35 min", "~35 min"), "granite-falls": ("~15 min", "~1 hr 10 min"), "hickory": ("—", "~1 hr"), "conover": ("~10 min", "~55 min"),
          "newton": ("~10 min", "~55 min"), "claremont": ("~15 min", "~55 min"), "maiden": ("~20 min", "~50 min"),
          "statesville": ("~35 min", "~45 min"), "lincolnton": ("~35 min", "~45 min"), "sherrills-ford": ("~30 min", "~45 min"),
          "denver": ("~40 min", "~35 min"), "mooresville": ("~45 min", "~30 min"), "davidson": ("~50 min", "~25 min"),
@@ -150,7 +155,7 @@ FOOTER = f'''<footer class="foot">
   </div>
   <div class="wrap foot-areas"><span>Areas I serve</span>{"".join(f'<a href="{k}.html">{AREAS[k]["name"]}</a>' for k in CORRIDOR)}</div>
   <div class="wrap fine eho-line"><svg class="eho" viewBox="0 0 40 40" role="img" aria-label="Equal Housing Opportunity"><path d="M20 3 2 15v4h4v18h28V19h4v-4z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><rect x="12" y="20" width="16" height="3.4" fill="currentColor"/><rect x="12" y="27" width="16" height="3.4" fill="currentColor"/></svg>
-    <span>© 2026 Nestlewood Realty · Equal Housing Opportunity · REALTOR®</span></div>
+    <span>© 2026 Nestlewood Realty · Equal Housing Opportunity · REALTOR® · Lake Norman photo: <a href="https://commons.wikimedia.org/wiki/File:Governors-Island-Lake-Norman.jpg" target="_blank" rel="noopener">Christopher Sheridan</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></span></div>
 </footer>'''
 
 SCHEMA = json.dumps({
@@ -516,7 +521,7 @@ def town_card(k):
   <p>{a["short"]}</p><div class="t-drive"><div><b>{h}</b><span>To Hickory</span></div><div><b>{c}</b><span>To Charlotte</span></div></div><i>Explore {a["name"]} →</i></a>'''
 
 page("relocate.html", "Relocating to Hickory, Lake Norman or Charlotte | Nolan Herman, REALTOR®", "relocate.html", f'''
-{page_hero("Relocate", "Moving <em>here?</em>", "From the foothills of Hickory to the Charlotte skyline, I'll help you find the right town and the right home, even from out of state.", "golden", "images/hickory-downtown.jpg")}
+{page_hero("Relocate", "Moving <em>here?</em>", "From the foothills of Hickory to the Charlotte skyline, I'll help you find the right town and the right home, even from out of state.", "golden", "images/hickory-downtown.jpg", video="clt-sunrise")}
 <section class="statement"><div class="wrap">
   <p class="eyebrow reveal">Why people move here</p>
   <h2 class="words" style="max-width:1050px">Mountains an hour one way, a major city an hour the other, and lake life in <em>between.</em></h2>
@@ -564,7 +569,7 @@ def market_block(m):
   <p class="fine" style="margin-top:.8rem">Source: <a href="{m["url"]}" {EXT} style="text-decoration:underline">{m["source"]}</a></p></div>'''
 
 page("market.html", f"Hickory & Charlotte Market Update, {MARKET_MONTH} | Nolan Herman, REALTOR®", "market.html", f'''
-{page_hero("Market update", "Market <em>update.</em>", "Home prices, days on market and supply for the Hickory and Charlotte areas, plus what it means if you're buying or selling.", "dusk", "images/charlotte-skyline.jpg")}
+{page_hero("Market update", "Market <em>update.</em>", "Home prices, days on market and supply for the Hickory and Charlotte areas, plus what it means if you're buying or selling.", "dusk", "images/charlotte-skyline.jpg", video="clt-stadium")}
 <section class="sec"><div class="wrap"><p class="eyebrow">{MARKET_MONTH}</p><h2>By the <em>numbers</em></h2>
   {"".join(market_block(m) for m in MARKET)}
 </div></section>
