@@ -13,18 +13,16 @@ FACEBOOK = "https://www.facebook.com/profile.php?id=61578346302536"
 CALENDLY = ""  # PLACEHOLDER: paste your Calendly link here
 EXT = 'target="_blank" rel="noopener"'
 # Full web address of the site. Change this if you move to a custom domain (e.g. "https://nolansellsnc.com/").
-BASE = "https://nolanherman07-commits.github.io/elite-website/"
+BASE = "https://nolanherman07-commits.github.io/nolan-sells-nc/"
 SHARE_IMAGE = "images/share.jpg"  # picture shown when a page link is texted or posted
 
 FEATURED = [
-  ("5182 Corbin Ln", "Hickory, NC", "https://www.zillow.com/homedetails/5182-Corbin-Ln-Hickory-NC-28601/92556701_zpid/", "images/listings/5182-corbin-ln.jpg"),
-  ("1056 Old Hampton Rd", "Boone, NC", "https://www.zillow.com/homedetails/1056-Old-Hampton-Rd-Boone-NC-28607/99379549_zpid/", "images/listings/1056-old-hampton-rd.jpg"),
-  ("2137 Olde Farm Rd", "Hudson, NC", "https://www.zillow.com/homedetails/2137-Olde-Farm-Rd-Hudson-NC-28638/70112964_zpid/", "images/listings/2137-olde-farm-rd.jpg"),
+  ("5182 Corbin Ln", "Hickory, NC", "https://www.zillow.com/homedetails/5182-Corbin-Ln-Hickory-NC-28601/92556701_zpid/", "images/listings/5182-corbin-ln.jpg", "$205,000"),
 ]
 SOLD = [
+  ("421 18th Ave", "Hickory, NC", ZILLOW, "images/listings/421-18th-ave.jpg"),
   ("7107 Rolling Hills Dr", "Sherrills Ford, NC", "https://www.zillow.com/homedetails/7107-Rolling-Hills-Dr-Sherrills-Ford-NC-28673/71910314_zpid/", "images/listings/7107-rolling-hills-dr.jpg"),
   ("350 14th Ave SW", "Hickory, NC", "https://www.zillow.com/homedetails/350-14th-Ave-SW-Hickory-NC-28602/464120420_zpid/", "images/listings/350-14th-ave-sw.jpg"),
-  ("1898 Henry Smith St", "Hickory, NC", "https://www.zillow.com/homedetails/1898-Henry-Smith-St-Hickory-NC-28601/227261430_zpid/", ""),
 ]
 AREAS = {
   "hickory": dict(name="Hickory", scene="golden", county="Catawba County", photo="images/hickory-downtown.jpg",
@@ -213,9 +211,9 @@ def page_hero(crumb, title_html, sub, scene, photo=None, video=None):
   <div class="ph-copy"><span class="crumb"><i></i> {crumb}</span><h1 class="split-words">{title_html}</h1><p>{sub}</p></div>
 </div></section>'''
 
-def card(addr, city, url, photo, sold=False, price=True):
+def card(addr, city, url, photo, ask="", sold=False, price=True):
     pic = f'<img src="{photo}" alt="{E(addr)}" />' if photo else '<div class="scene" data-scene="dawn"></div>'
-    sub = f"{city} · $XXX,XXX" if (price and not sold) else city
+    sub = f"{city} · {ask or '$XXX,XXX'}" if (price and not sold) else city
     return f'''<a class="home-card" href="{url}" {EXT}><div class="img">{pic}</div>
   <div class="info glass"><span class="badge{" sold" if sold else ""}">{"Sold" if sold else "Featured"}</span><h3>{E(addr)}</h3><p>{sub}</p></div></a>'''
 
@@ -223,7 +221,7 @@ def rail(items, title_html, eyebrow, link=None):
     return f'''<section class="listings">
   <div class="wrap head"><div><p class="eyebrow">{eyebrow}</p><h2>{title_html}</h2></div>
     <div class="arrows">{f'<a class="pill" href="{link}" style="margin-right:.6rem">View all</a>' if link else ""}<button class="arr prev" aria-label="Previous">←</button><button class="arr next" aria-label="Next">→</button></div></div>
-  <div class="rail" tabindex="0">{"".join(card(*i[:4], sold=i in SOLD) for i in items)}</div>
+  <div class="rail" tabindex="0">{"".join(card(*i, sold=i in SOLD) for i in items)}</div>
   <div class="wrap"><div class="progress"><span></span></div></div>
 </section>'''
 
@@ -399,16 +397,6 @@ page("about.html", "About Nolan Herman | Nestlewood Realty", "about.html", f'''
     </div>
   </div>
 </section>
-<section class="sec"><div class="wrap"><p class="eyebrow">Behind the scenes</p><h2>On the <em>job</em></h2>
-  <div class="gallery">
-    <div class="reveal"><div class="scene" data-scene="golden"></div><span class="label">Action shot: you at a closing</span></div>
-    <div class="reveal"><div class="scene" data-scene="dusk"></div><span class="label">Action shot: showing a home</span></div>
-    <div class="reveal"><div class="scene" data-scene="mist"></div><span class="label">Action shot: with clients</span></div>
-    <div class="reveal"><div class="scene" data-scene="dawn"></div><span class="label">Action shot: open house</span></div>
-    <div class="reveal"><div class="scene" data-scene="sunset"></div><span class="label">Action shot: around Hickory</span></div>
-  </div>
-  <div class="hero-btns" style="margin-top:2.4rem"><a class="pill solid" href="{ZILLOW}" {EXT}>My Zillow profile</a><a class="pill" style="color:var(--ink);border-color:rgba(0,0,0,.25)" href="{HOMES}" {EXT}>My Homes.com profile</a></div>
-</div></section>
 <section class="sec sand"><div class="wrap center"><p class="eyebrow">How I got here</p><h2>From emails to <em>$10M+</em></h2>
   <div class="timeline" style="text-align:left">
     <div class="tl reveal"><i>1</i><h3>Growing up</h3><p>Saw firsthand how stressful moving can be for a family.</p></div>
