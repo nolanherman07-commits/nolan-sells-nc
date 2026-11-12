@@ -7,6 +7,8 @@ const LEAD_EMAIL = "nolan@nestlewoodrealty.com";
 // Forms are delivered to LEAD_EMAIL by FormSubmit (formsubmit.co, free, no account).
 // The very first submission sends an "Activate form" email to LEAD_EMAIL; click it once.
 const FORM_ENDPOINT = "https://formsubmit.co/ajax/" + LEAD_EMAIL;
+// Per-video tuning: "start" skips that many seconds at the beginning, "rate" is playback speed (1 = normal).
+const VIDEO_TUNING = { "videos/sell.mp4": { start: 3, rate: 1.5 } };
 
 /* Always start each page at the top (unless the link points to a section, like sell.html#value) */
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
@@ -69,7 +71,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Optional hero video
   $$(".hero-video[data-src]").forEach((v) => {
-    v.addEventListener("loadeddata", () => { v.hidden = false; v.classList.add("ready"); v.play().catch(() => {}); }, { once: true });
+    const tune = VIDEO_TUNING[v.dataset.src] || {}, start = tune.start || 0, rate = tune.rate || 1;
+    const setRate = () => { v.defaultPlaybackRate = rate; v.playbackRate = rate; };
+    if (start) {
+      // Skip the opening seconds, including every time the clip loops
+      v.loop = false;
+      v.addEventListener("loadedmetadata", () => { v.currentTime = start; }, { once: true });
+      v.addEventListener("ended", () => { v.currentTime = start; setRate(); v.play().catch(() => {}); });
+    }
+    v.addEventListener("loadeddata", () => { v.hidden = false; v.classList.add("ready"); setRate(); v.play().catch(() => {}); }, { once: true });
     v.src = v.dataset.src;
   });
 
