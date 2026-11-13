@@ -490,3 +490,31 @@ em { font-style: italic; color: var(--accent); }
 .eho-line { display: flex; align-items: center; gap: .7rem; margin: 1.6rem auto 0; padding-top: 1.4rem; border-top: 1px solid rgba(0,0,0,.08); }
 .eho { width: 26px; height: 26px; flex: none; color: var(--muted); }
 .foot .soc { flex-wrap: wrap; row-gap: .5rem; }
+
+/* Background videos: never show the browser's player UI (iPhone play button, controls, PiP) */
+.hero-video { pointer-events: none; }
+.hero-video::-webkit-media-controls,
+.hero-video::-webkit-media-controls-panel,
+.hero-video::-webkit-media-controls-overlay-play-button,
+.hero-video::-webkit-media-controls-start-playback-button { display: none !important; -webkit-appearance: none; opacity: 0 !important; }
+@media (prefers-reduced-motion: reduce) { .hero-video { display: none !important; } }
+
+/* ===== quality pass (website-quality checklist) ===== */
+/* relocation town cards: never wider than a phone */
+.towns { grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); }
+.t-top { flex-wrap: wrap; row-gap: .2rem; }
+@media (max-width: 600px) { .t-top span { white-space: normal; } }
+/* thumb-sized phone tab bar */
+@media (max-width: 900px) { .tabbar a { min-height: 44px; display: flex; align-items: center; justify-content: center; } }
+/* photo credit on town photos */
+.area-photo .photo-credit { position: absolute; right: 12px; bottom: 10px; z-index: 3; padding: .3rem .7rem; border-radius: 999px; background: rgba(20,18,22,.55); backdrop-filter: blur(8px); color: rgba(255,255,255,.85); font-size: .66rem; }
+.area-photo .photo-credit a { color: #fff; text-decoration: underline; }
+/* headlines wrap evenly, numbers don't jiggle */
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+.fact b, .stat b, [data-count] { font-variant-numeric: tabular-nums; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+/* thumb-sized links on touch screens */
+@media (hover: none) {
+  footer nav a, footer .f-links a, .foot a, .pill.sm { min-height: 44px; display: inline-flex; align-items: center; }
+}

@@ -64,6 +64,7 @@ function mountainSVG(name, seed = 7) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".yr").forEach((e) => { e.textContent = new Date().getFullYear(); });
   const $ = (q, r = document) => r.querySelector(q), $$ = (q, r = document) => [...r.querySelectorAll(q)];
   $$(".scene").forEach((el, i) => {
     el.innerHTML = mountainSVG(el.dataset.scene, 11 + i * 17);
@@ -83,13 +84,21 @@ document.addEventListener("DOMContentLoaded", () => {
       v.classList.remove("ready");
       setTimeout(() => { i = (i + 1) % list.length; load(); }, 900);
     };
+    // Phones (iPhone Low Power Mode, data saver) can refuse to autoplay. The video then stays
+    // hidden behind the page's still scene, so nobody ever sees a play button or video player.
+    v.muted = true; v.defaultMuted = true; v.playsInline = true;
+    v.setAttribute("playsinline", ""); v.setAttribute("webkit-playsinline", "");
+    v.disablePictureInPicture = true; v.removeAttribute("controls");
     const load = () => { advancing = false; v.loop = !multi && !tune().start; v.src = list[i]; };
     v.addEventListener("loadedmetadata", () => { if (tune().start) v.currentTime = tune().start; });
     v.addEventListener("loadeddata", () => {
       const rate = tune().rate || 1;
       v.defaultPlaybackRate = rate; v.playbackRate = rate;
-      v.hidden = false; v.classList.add("ready"); v.play().catch(() => {});
+      const p = v.play();
+      if (p && p.catch) p.catch(() => { v.hidden = true; v.classList.remove("ready"); });
     });
+    // show it only once frames are actually playing
+    v.addEventListener("playing", () => { v.hidden = false; v.classList.add("ready"); });
     v.addEventListener("timeupdate", () => { if (multi && v.currentTime - (tune().start || 0) > CLIP_MAX_SECONDS) next(); });
     v.addEventListener("ended", () => {
       if (multi) return next();

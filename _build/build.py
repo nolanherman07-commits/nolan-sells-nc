@@ -10,7 +10,7 @@ ZILLOW = "https://www.zillow.com/profile/Nolansellnc"
 HOMES = "https://www.homes.com/real-estate-agents/nolan-herman/2672vt8/"
 INSTAGRAM = "https://www.instagram.com/nolansellsnc/"
 FACEBOOK = "https://www.facebook.com/profile.php?id=61578346302536"
-CALENDLY = ""  # PLACEHOLDER: paste your Calendly link here
+CALENDLY = ""  # optional: paste a Calendly link here (the Book a call button calls you until then)
 EXT = 'target="_blank" rel="noopener"'
 # Full web address of the site. Change this if you move to a custom domain (e.g. "https://nolansellsnc.com/").
 BASE = "https://nolanherman07-commits.github.io/nolan-sells-nc/"
@@ -28,50 +28,50 @@ AREAS = {
   "hickory": dict(name="Hickory", scene="golden", county="Catawba County", photo="images/hickory-downtown.jpg",
     short="Lively downtown, Lake Hickory, and an easy drive to Charlotte and the mountains.",
     intro="Hickory is the largest city in the Catawba Valley, with a lively downtown, Lake Hickory on the Catawba River, and Lenoir-Rhyne University. You get city amenities, lake life, and an easy drive to Charlotte and the mountains.",
-    facts=[("Catawba", "County"), ("~1 hr", "To Charlotte"), ("Lake Hickory", "On the water"), ("$XXX,XXX", "Median price*")],
+    facts=[("Catawba", "County"), ("~1 hr", "To Charlotte"), ("Lake Hickory", "On the water"), ("~1 hr", "To the Blue Ridge")],
     love=["Downtown restaurants, shops and events", "Lake Hickory for boating and waterfront homes", "Parks, greenways and youth sports", "Quick access to I-40 and US-321"]),
   "conover": dict(name="Conover", scene="dusk", county="Catawba County", photo="images/conover.jpg",
     short="A friendly, growing city right next to Hickory, with a lively downtown and community events.",
     intro="Conover sits right between Hickory and Newton in Catawba County. It has a revitalized downtown with outdoor events and concerts, quiet neighborhoods, and quick access to I-40, so you're minutes from everything the Hickory area offers.",
-    facts=[("Catawba", "County"), ("~10 min", "To Hickory"), ("I-40", "Right off the highway"), ("$XXX,XXX", "Median price*")],
+    facts=[("Catawba", "County"), ("~10 min", "To Hickory"), ("I-40", "Right off the highway"), ("~55 min", "To Charlotte")],
     love=["Downtown events and summer concerts", "Quiet neighborhoods with room to grow", "Minutes from Hickory shopping and jobs", "Easy access to I-40"]),
   "huntersville": dict(name="Huntersville", scene="dawn", county="Mecklenburg County", photo="images/huntersville-sign.jpg",
     short="Lake Norman living just north of Charlotte, established 1873.",
     intro="Huntersville is a fast-growing town in northern Mecklenburg County, just north of Charlotte and close to Lake Norman. It's a great fit if you want suburban neighborhoods, lake access, and an easy commute into the city.",
-    facts=[("Mecklenburg", "County"), ("~20 min", "To Charlotte"), ("Lake Norman", "Nearby"), ("$XXX,XXX", "Median price*")],
+    facts=[("Mecklenburg", "County"), ("~20 min", "To Charlotte"), ("Lake Norman", "Nearby"), ("I-77", "Commuter corridor")],
     love=["Close to Lake Norman", "Newer neighborhoods and parks", "Easy commute to uptown Charlotte", "Shopping and dining along I-77"]),
   "granite-falls": dict(name="Granite Falls", scene="mist", county="Caldwell County", photo="images/granite-falls.jpg",
     short="Quiet living near Lake Rhodhiss, with room to grow and quick trips into town.",
     intro="Granite Falls is a friendly small town in Caldwell County along US-321, between Hickory and Lenoir. It's close to Lake Rhodhiss and Lake Hickory, and a great fit if you want more space and a slower pace without being far from town.",
-    facts=[("Caldwell", "County"), ("~15 min", "To Hickory"), ("Lakes", "Rhodhiss & Hickory"), ("$XXX,XXX", "Median price*")],
+    facts=[("Caldwell", "County"), ("~15 min", "To Hickory"), ("Lakes", "Rhodhiss & Hickory"), ("US-321", "Hickory to Lenoir")],
     love=["Small-town community feel", "Close to lakes and the outdoors", "Larger lots and room to grow", "Quick drive to Hickory and Lenoir"]),
   "charlotte": dict(name="Charlotte", scene="sunset", county="Mecklenburg County", photo="images/charlotte-skyline.jpg", video="clt-skyline-day",
     short="North Carolina's largest city: uptown skyline, pro sports, and neighborhoods for every lifestyle.",
     intro="Charlotte is the largest city in North Carolina, with a busy uptown, pro football and basketball, great restaurants, and a huge range of neighborhoods. Whether you're relocating for work or want city energy with easy access to Lake Norman and the foothills, I'll help you find the right fit.",
-    facts=[("Mecklenburg", "County"), ("~1 hr", "To Hickory"), ("Largest", "City in NC"), ("$XXX,XXX", "Median price*")],
+    facts=[("Mecklenburg", "County"), ("~1 hr", "To Hickory"), ("Largest", "City in NC"), ("$425K", "Metro median price*")],
     love=["Uptown dining, sports and nightlife", "Job opportunities across the region", "Neighborhoods from urban to suburban", "Close to Lake Norman and the foothills"]),
-  # ---- Hickory-to-Charlotte corridor towns (no photos yet: animated scene shows instead) ----
-  "newton": dict(name="Newton", scene="golden", county="Catawba County",
+  # ---- Hickory-to-Charlotte corridor towns (photos from Wikimedia Commons; credit shows on each town page) ----
+  "newton": dict(name="Newton", scene="golden", county="Catawba County", photo="images/towns/newton.jpg", credit=('Indy beetle', 'https://commons.wikimedia.org/wiki/File:Newton,_North_Carolina_01.jpg', 'CC0', 'https://creativecommons.org/publicdomain/zero/1.0/'),
     short="The Catawba County seat, with a historic courthouse square and small-town charm.",
     intro="Newton is the county seat of Catawba County, just south of Conover and minutes from Hickory. Its historic 1924 courthouse anchors a walkable downtown, and the town is known for Soldiers' Reunion, one of the longest-running community celebrations in the country.",
     facts=[("Catawba", "County"), ("~10 min", "To Hickory"), ("~55 min", "To Charlotte"), ("NC-16", "Straight to Charlotte")],
     love=["Historic downtown and courthouse square", "Soldiers' Reunion every August", "Established neighborhoods and good value", "Easy access to US-321, I-40 and NC-16"]),
-  "claremont": dict(name="Claremont", scene="mist", county="Catawba County",
+  "claremont": dict(name="Claremont", scene="mist", county="Catawba County", photo="images/towns/claremont.jpg", credit=('William Keener', 'https://commons.wikimedia.org/wiki/File:Bunker_Hill_Covered_Bridge_in_Claremont,_N.C._(3).jpg', 'CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'),
     short="A small city on I-40 with a quiet, country feel, just east of Conover.",
     intro="Claremont is a small city along I-40 on the eastern side of Catawba County. You get quiet streets, room to spread out, and a quick hop to Hickory, Conover and Statesville without paying big-city prices.",
     facts=[("Catawba", "County"), ("~15 min", "To Hickory"), ("I-40", "Right off the highway"), ("~25 min", "To Statesville")],
     love=["Quiet, small-town pace", "More land for the money", "Quick I-40 access east and west", "Close to Conover and Newton shopping"]),
-  "maiden": dict(name="Maiden", scene="dawn", county="Catawba County",
+  "maiden": dict(name="Maiden", scene="dawn", county="Catawba County", photo="images/towns/maiden.jpg", credit=('Skepticalpoet', 'https://commons.wikimedia.org/wiki/File:Memorial_Reformed_Church.jpg', 'CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'),
     short="A friendly town on US-321 between Newton and Lincolnton.",
     intro="Maiden is a small town in southern Catawba County on US-321. It has a close-knit community, parks and ballfields, and a central spot that puts you about 20 minutes from Hickory and within reach of Lake Norman and Charlotte.",
     facts=[("Catawba", "County"), ("~20 min", "To Hickory"), ("US-321", "North-south access"), ("~50 min", "To Charlotte")],
     love=["Close-knit small-town feel", "Parks, ballfields and community events", "Central to Hickory, Lincolnton and Lake Norman", "Good value on homes and land"]),
-  "lincolnton": dict(name="Lincolnton", scene="sunset", county="Lincoln County",
+  "lincolnton": dict(name="Lincolnton", scene="sunset", county="Lincoln County", photo="images/towns/lincolnton.jpg", credit=('Washuotaku', 'https://commons.wikimedia.org/wiki/File:Lincoln_County_Courthouse_(Lincolnton,_North_Carolina).jpg', 'CC BY-SA 3.0', 'https://creativecommons.org/licenses/by-sa/3.0/'),
     short="The Lincoln County seat, with a classic Main Street and the South Fork River.",
     intro="Lincolnton is the county seat of Lincoln County, along US-321 between Hickory and Gastonia. It has a revitalized downtown, the South Fork River running through town, and a mix of historic homes, new neighborhoods and country land.",
     facts=[("Lincoln", "County"), ("~35 min", "To Hickory"), ("~45 min", "To Charlotte"), ("US-321", "North-south access")],
     love=["Revitalized downtown and local restaurants", "South Fork River and outdoor space", "Mix of historic homes and new construction", "Easy drive to Lake Norman and Gastonia"]),
-  "denver": dict(name="Denver", scene="dusk", county="Lincoln County",
+  "denver": dict(name="Denver", scene="dusk", county="Lincoln County", photo="images/towns/denver.jpg", credit=('James St. John', 'https://commons.wikimedia.org/wiki/File:Lake_Norman_(North_Carolina,_USA)_2.jpg', 'CC BY 2.0', 'https://creativecommons.org/licenses/by/2.0/'),
     short="Lake Norman's western shore, with newer neighborhoods and a quick NC-16 commute.",
     intro="Denver sits on the western shore of Lake Norman in eastern Lincoln County. It's one of the fastest-growing spots in the region, with waterfront and water-access homes, newer neighborhoods, and NC-16 running straight into Charlotte.",
     facts=[("Lincoln", "County"), ("~35 min", "To Charlotte"), ("Lake Norman", "West shore"), ("NC-16", "Straight to Charlotte")],
@@ -81,27 +81,27 @@ AREAS = {
     intro="Lake Norman is the largest man-made lake in North Carolina, with over 500 miles of shoreline across four counties. Towns like Mooresville, Cornelius, Davidson, Huntersville, Denver and Sherrills Ford surround it, so you can find everything from waterfront estates to lake-access neighborhoods, all within reach of Charlotte and Hickory.",
     facts=[("4", "Counties"), ("500+ mi", "Of shoreline"), ("~35 min", "To Charlotte"), ("~35 min", "To Hickory")],
     love=["Boating, swimming and waterfront dining", "Waterfront and lake-access homes", "Towns all around the lake to choose from", "Easy I-77 commute to Charlotte"]),
-  "sherrills-ford": dict(name="Sherrills Ford", scene="dawn", county="Catawba County",
+  "sherrills-ford": dict(name="Sherrills Ford", scene="dawn", county="Catawba County", photo="images/towns/sherrills-ford.jpg", credit=('James St. John', 'https://commons.wikimedia.org/wiki/File:Lake_Norman_(North_Carolina,_USA)_1.jpg', 'CC BY 2.0', 'https://creativecommons.org/licenses/by/2.0/'),
     short="Lake Norman living on the Catawba County side of the lake.",
     intro="Sherrills Ford is a lakeside community in southeastern Catawba County on Lake Norman's northwest shore. It's popular with buyers who want lake life, golf and bigger lots, with Hickory, Mooresville and Charlotte all within reach.",
     facts=[("Catawba", "County"), ("Lake Norman", "Northwest shore"), ("~30 min", "To Hickory"), ("~45 min", "To Charlotte")],
     love=["Waterfront and lake-access homes", "Golf and lake communities", "Bigger lots and a quieter pace", "Between Hickory, Mooresville and Charlotte"]),
-  "mooresville": dict(name="Mooresville", scene="sunset", county="Iredell County",
+  "mooresville": dict(name="Mooresville", scene="sunset", county="Iredell County", photo="images/towns/mooresville.jpg", credit=('Cdtew at English Wikipedia', 'https://commons.wikimedia.org/wiki/File:Mooresville_Historic_District_(Main_Street).jpg', 'CC BY-SA 3.0', 'https://creativecommons.org/licenses/by-sa/3.0/'),
     short="Race City USA on Lake Norman, with shopping, jobs and an I-77 commute.",
     intro="Mooresville is the largest town on Lake Norman, in southern Iredell County along I-77. Known as Race City USA for its NASCAR teams, it offers a busy retail corridor, a historic downtown, and everything from lake homes to new-build neighborhoods.",
     facts=[("Iredell", "County"), ("~30 min", "To Charlotte"), ("Lake Norman", "East shore"), ("I-77", "Commuter corridor")],
     love=["Lake Norman boating and waterfront living", "Historic downtown and big shopping options", "Racing heritage and local employers", "Quick I-77 drive into Charlotte"]),
-  "statesville": dict(name="Statesville", scene="golden", county="Iredell County",
+  "statesville": dict(name="Statesville", scene="golden", county="Iredell County", photo="images/towns/statesville.jpg", credit=('Witchywoman331', 'https://commons.wikimedia.org/wiki/File:The_Historic_Morrison-Mott_House_in_downtown_Statesville,_NC.jpg', 'CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'),
     short="Where I-40 meets I-77, with a historic downtown and room to grow.",
     intro="Statesville is the county seat of Iredell County, right where I-40 and I-77 cross. That location makes it an easy commute to Hickory, Mooresville and Charlotte, and it pairs a historic downtown with more affordable homes and land.",
     facts=[("Iredell", "County"), ("~35 min", "To Hickory"), ("~45 min", "To Charlotte"), ("I-40 + I-77", "Crossroads")],
     love=["Historic downtown", "More home and land for the money", "I-40 and I-77 in every direction", "Close to Lake Norman"]),
-  "cornelius": dict(name="Cornelius", scene="dusk", county="Mecklenburg County",
+  "cornelius": dict(name="Cornelius", scene="dusk", county="Mecklenburg County", photo="images/towns/cornelius.jpg", credit=('Dough4872', 'https://commons.wikimedia.org/wiki/File:Lake_Norman_beach_in_Ramsey_Creek_Park.jpeg', 'CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'),
     short="The heart of Lake Norman, with marinas, waterfront dining and an I-77 commute.",
     intro="Cornelius sits on the southeast shore of Lake Norman in northern Mecklenburg County. It's known for marinas, lakefront restaurants and waterfront neighborhoods, with I-77 putting uptown Charlotte about 25 minutes away.",
     facts=[("Mecklenburg", "County"), ("~25 min", "To Charlotte"), ("Lake Norman", "Southeast shore"), ("I-77", "Commuter corridor")],
     love=["Marinas and waterfront dining", "Lakefront and lake-access neighborhoods", "Quick commute to uptown Charlotte", "Parks and greenways"]),
-  "davidson": dict(name="Davidson", scene="mist", county="Mecklenburg County",
+  "davidson": dict(name="Davidson", scene="mist", county="Mecklenburg County", photo="images/towns/davidson.jpg", credit=('Dacoslett at English Wikipedia', 'https://commons.wikimedia.org/wiki/File:Chambers_Building,_Davidson_College_(Davidson,_North_Carolina).jpg', 'Public domain', 'https://creativecommons.org/publicdomain/mark/1.0/'),
     short="A walkable college town on Lake Norman, home to Davidson College.",
     intro="Davidson is a small, walkable town in northern Mecklenburg County, home to Davidson College. Its classic Main Street, greenways and lake access make it one of the most sought-after towns in the Charlotte area.",
     facts=[("Mecklenburg", "County"), ("~25 min", "To Charlotte"), ("Davidson", "College town"), ("Lake Norman", "Nearby")],
@@ -155,7 +155,7 @@ FOOTER = f'''<footer class="foot">
   </div>
   <div class="wrap foot-areas"><span>Areas I serve</span>{"".join(f'<a href="{k}.html">{AREAS[k]["name"]}</a>' for k in CORRIDOR)}</div>
   <div class="wrap fine eho-line"><svg class="eho" viewBox="0 0 40 40" role="img" aria-label="Equal Housing Opportunity"><path d="M20 3 2 15v4h4v18h28V19h4v-4z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><rect x="12" y="20" width="16" height="3.4" fill="currentColor"/><rect x="12" y="27" width="16" height="3.4" fill="currentColor"/></svg>
-    <span>© 2026 Nestlewood Realty · Equal Housing Opportunity · REALTOR® · Lake Norman photo: <a href="https://commons.wikimedia.org/wiki/File:Governors-Island-Lake-Norman.jpg" target="_blank" rel="noopener">Christopher Sheridan</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></span></div>
+    <span>© <span class="yr">2026</span> Nestlewood Realty · Equal Housing Opportunity · REALTOR® · Lake Norman photo: <a href="https://commons.wikimedia.org/wiki/File:Governors-Island-Lake-Norman.jpg" target="_blank" rel="noopener">Christopher Sheridan</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></span></div>
 </footer>'''
 
 SCHEMA = json.dumps({
@@ -189,7 +189,7 @@ def page(fname, title, active, body, curtain=False, desc=DEFAULT_DESC):
 <meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <script type="application/ld+json">{SCHEMA}</script>
-<link rel="icon" href="images/tree-icon.png" />
+<link rel="icon" href="images/tree-icon.png" /><link rel="apple-touch-icon" href="images/tree-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="elite.css" />
@@ -212,13 +212,13 @@ def bg(scene, photo=None):
 def page_hero(crumb, title_html, sub, scene, photo=None, video=None):
     fog = "" if photo else '<div class="fog f1"></div><div class="fog f2"></div>'
     return f'''<section class="page-hero"><div class="frame">
-  {bg(scene, photo)}{(f'<video class="hero-video" data-src="videos/{video}.mp4" muted loop playsinline autoplay hidden></video>' if video else '')}{fog}<div class="shade"></div>
+  {bg(scene, photo)}{(f'<video class="hero-video" data-src="{video if video.startswith("http") else f"videos/{video}.mp4"}" muted loop playsinline autoplay hidden disablepictureinpicture disableremoteplayback preload="metadata" aria-hidden="true"></video>' if video else '')}{fog}<div class="shade"></div>
   <div class="ph-copy"><span class="crumb"><i></i> {crumb}</span><h1 class="split-words">{title_html}</h1><p>{sub}</p></div>
 </div></section>'''
 
 def card(addr, city, url, photo, ask="", sold=False, price=True):
     pic = f'<img src="{photo}" alt="{E(addr)}" />' if photo else '<div class="scene" data-scene="dawn"></div>'
-    sub = f"{city} · {ask or '$XXX,XXX'}" if (price and not sold) else city
+    sub = f"{city} · {ask}" if (price and ask and not sold) else city  # no price yet: show the city only
     return f'''<a class="home-card" href="{url}" {EXT}><div class="img">{pic}</div>
   <div class="info glass"><span class="badge{" sold" if sold else ""}">{"Sold" if sold else "Featured"}</span><h3>{E(addr)}</h3><p>{sub}</p></div></a>'''
 
@@ -349,7 +349,7 @@ page("index.html", "Nolan Herman, REALTOR® | Nestlewood Realty | Hickory, NC", 
 <section class="hero" id="top">
   <div class="frame">
     <div class="scene" data-scene="sunset"></div>
-    <video class="hero-video" data-src="videos/mountains.mp4" muted loop playsinline autoplay hidden></video>
+    <video class="hero-video" data-src="https://videos.pexels.com/video-files/33464075/14238297_1920_1080_30fps.mp4" muted loop playsinline autoplay hidden disablepictureinpicture disableremoteplayback preload="metadata" aria-hidden="true"></video>
     <div class="fog f1"></div><div class="fog f2"></div><div class="fog f3"></div><div class="shade"></div>
     <div class="trace-line" aria-hidden="true"><span class="chip"><i></i> Serving Hickory &amp; Charlotte</span></div>
     <div class="hero-copy">
@@ -447,7 +447,7 @@ page("buy.html", "Buy a Home | Nolan Herman, REALTOR®", "buy.html", f'''
 
 # ================= SELL =================
 page("sell.html", "Sell Your Home | Nolan Herman, REALTOR®", "sell.html", f'''
-{page_hero("Sell", "Sell your <em>home.</em>", "Smart pricing, professional photos, and social media marketing that puts your home in front of the right buyers.", "dusk", video="beach")}
+{page_hero("Sell", "Sell your <em>home.</em>", "Smart pricing, professional photos, and social media marketing that puts your home in front of the right buyers.", "dusk", video="https://videos.pexels.com/video-files/10215996/10215996-hd_1080_1920_30fps.mp4")}
 <section class="statement"><div class="wrap">
   <p class="eyebrow reveal">Results</p>
   <h2 class="words" style="max-width:1000px">Every one of my listings has sold. I launch your home like a product, so buyers compete for <em>it.</em></h2>
@@ -474,6 +474,14 @@ page("listings.html", "Listings | Nolan Herman, REALTOR®", "listings.html", f''
   <div class="grid3">{"".join(card(*l, sold=True) for l in SOLD)}</div></div></section>
 {CTA}''', desc="Featured homes for sale and recent sales by Nolan Herman, REALTOR® with Nestlewood Realty, across the Catawba Valley and beyond.")
 
+def credit_line(a):
+    c = a.get("credit")
+    if not c:
+        return ""
+    who, page_url, lic, lic_url = c
+    return (f'<span class="photo-credit">Photo: <a href="{page_url}" {EXT}>{E(who)}</a>, '
+            f'<a href="{lic_url}" {EXT}>{E(lic)}</a></span>')
+
 # Area pages (no separate Areas overview page)
 for key, a in AREAS.items():
     i = CORRIDOR.index(key)
@@ -484,10 +492,10 @@ for key, a in AREAS.items():
   <div class="reveal"><p class="eyebrow">{a["county"]}</p><h2>Why people love <em>{a["name"]}</em></h2><p class="lead">{a["intro"]}</p>
     <ul class="checks">{"".join(f"<li>{E(x)}</li>" for x in a["love"])}</ul>
     <div class="hero-btns" style="margin-top:2rem"><a class="pill solid" href="contact.html">Find a home in {a["name"]}</a></div></div>
-  <div class="area-photo reveal">{bg(a["scene"], a.get("photo"))}{"" if a.get("photo") else f'<span class="tag-glass">Photo of {a["name"]} goes here</span>'}</div>
+  <div class="area-photo reveal">{bg(a["scene"], a.get("photo"))}{credit_line(a)}</div>
 </div>
 <div class="wrap"><div class="facts">{"".join(f'<div class="fact reveal"><b>{E(x)}</b><span>{E(y)}</span></div>' for x, y in a["facts"])}</div>
-  {'<p class="fine" style="margin-top:1rem">*Market numbers are placeholders. Update with current local data.</p>' if any("XXX" in x for x, y in a["facts"]) else ""}</div></section>
+  {'<p class="fine" style="margin-top:1rem">*Charlotte metro median sale price, August 2026 (Homes.com). See the <a href="market.html" style="text-decoration:underline">market update</a>.</p>' if any("*" in y for x, y in a["facts"]) else ""}</div></section>
 {panels(others, "Nearby <em>areas</em>")}
 {TOOLS}
 {CTA}''', desc=f"Thinking about living in {a['name']}, NC? {a['short']} Homes, neighborhoods and local tips from Nolan Herman, REALTOR®.")
@@ -512,7 +520,7 @@ page("contact.html", "Contact Nolan Herman | Nestlewood Realty", "contact.html",
   <div class="booking reveal"><div class="scene" data-scene="night"></div><div class="stars"></div>
     <div><p class="eyebrow" style="color:rgba(255,255,255,.7)">Book a call</p><h2>Pick a <em>time.</em></h2>
       <div class="cal">{"".join(f'<i class="{"sel" if d == 14 else "av" if d in (9,10,15,16,17,21,22) else ""}">{d}</i>' for d in range(5, 26))}</div>
-      <p class="fine" style="color:rgba(255,255,255,.7)">PLACEHOLDER: your Calendly calendar goes here.</p></div></div>
+      <a class="pill solid" href="{CALENDLY or "tel:" + TEL}" style="margin-top:1rem">Book a call</a></div></div>
 </div></section>''', desc="Call, text or email Nolan Herman, REALTOR® at Nestlewood Realty, 825 Highland Ave SE, Hickory, NC. 828-404-5335.")
 # ================= RELOCATE =================
 def town_card(k):
