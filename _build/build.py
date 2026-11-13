@@ -306,6 +306,47 @@ QUOTE_STRIP = '<section class="quote-strip" aria-label="Client reviews"><div cla
 
 REVIEWS = QUOTE_STRIP  # every page uses the fast one-line strip
 
+# Home page review wall: tilted, auto-scrolling cards. Each card is the best line from a Zillow review.
+WALL_QUOTES = [
+  ("He even caught a mistake during closing that got us more money.", "John F."),
+  ("Nolan was our best realtor! He made the buying process enjoyable.", "Diane S."),
+  ("You feel like you're their only client.", "Lorena &amp; Martin"),
+  ("Working with Nolan was an outstanding experience from start to finish. He made us feel supported, informed, and confident.", "Alfred &amp; Rashonda W."),
+  ("Nolan significantly eased the process.", "Pricilla &amp; Jeff L."),
+  ("Always proactive, responsive, and genuinely committed to my best interests.", "Jacopo B."),
+  ("He responds quickly and was on top of all the paperwork.", "Kalen &amp; Micheal M."),
+  ("He went above and beyond with all of the little things.", "Mindy D."),
+  ("Nolan was there every step of the way to boost me over every hurdle.", "David J."),
+  ("He made a stressful time easy, efficient, and quick.", "Ashley &amp; Bill"),
+  ("Nolan did a great job with a seller who wasn't motivated to negotiate.", "Dwayne W."),
+  ("He looked out for our best interests, getting us a fantastic deal.", "Lorena &amp; Martin"),
+  ("Very knowledgeable, responsive, patient, personable, always ready to help.", "Diane S."),
+  ("Truly a pleasure to work with Nolan.", "Darlene P."),
+  ("I would highly recommend this young man.", "John F."),
+  ("He was always quick to answer our questions, incredibly patient.", "Alfred &amp; Rashonda W."),
+  ("I could not have had a better agent.", "David J."),
+  ("He is exceptional at what he does.", "Jacopo B."),
+  ("Nolan was courteous, respectful and responsive.", "Darlene P."),
+  ("We couldn't have asked for a better realtor than Nolan.", "Alfred &amp; Rashonda W."),
+]
+def _rw_card(q, n, hidden=False):
+    big = " rw-big" if len(q) > 90 else ""
+    aria = ' aria-hidden="true"' if hidden else ""
+    return f'<figure class="rw-card{big}"{aria}><div class="rw-stars">★★★★★</div><blockquote>“{q}”</blockquote><figcaption><b>{n}</b> · Zillow</figcaption></figure>'
+def _rw_col(i):
+    items = WALL_QUOTES[i::5]
+    return (f'<div class="rw-col rw-c{i}"><div class="rw-track">' + "".join(_rw_card(q, n) for q, n in items)
+            + "".join(_rw_card(q, n, True) for q, n in items) + '</div></div>')
+REVIEW_WALL = f'''<section class="rw" aria-label="Client reviews">
+  <div class="rw-head">
+    <div class="rw-kick">★★★★★ <span>5.0 on Zillow</span></div>
+    <h2>Don't take <em>my</em> word for it.</h2>
+    <p>Real reviews from buyers and sellers across Hickory, Newton, Granite Falls and Vale.</p>
+    <a href="{ZILLOW}" {EXT}>Read all reviews on Zillow →</a>
+  </div>
+  <div class="rw-stage"><div class="rw-grid">{"".join(_rw_col(i) for i in range(5))}</div></div>
+</section>'''
+
 RESUMES = '''<section class="sec resumes"><div class="wrap">
   <div class="head"><div><p class="eyebrow">Résumé</p><h2>See why clients <em>choose Nolan</em></h2></div></div>
   <div class="res-grid">
@@ -386,7 +427,7 @@ page("index.html", "Nolan Herman, REALTOR® | Nestlewood Realty | Hickory, NC", 
     </div>
   </div>
 </section>
-{QUOTE_STRIP}
+{REVIEW_WALL}
 {RESUMES}
 {panels(HOME_AREAS)}
 {TOOLS}
