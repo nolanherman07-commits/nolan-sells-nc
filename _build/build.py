@@ -133,7 +133,7 @@ MARKET_TAKE = [
 ]
 
 NAV = [("about.html", "About"), ("buy.html", "Buying?"), ("sell.html", "Selling?"), ("relocate.html", "Relocating?"), ("listings.html", "Listings")]
-TABS = [("about.html", "About"), ("buy.html", "Buy"), ("sell.html", "Sell"), ("relocate.html", "Out of town"), ("listings.html", "Listings")]  # short labels for the phone tab bar
+TABS = [("about.html", "About"), ("buy.html", "Buying?"), ("sell.html", "Selling?"), ("relocate.html", "Relocating?"), ("listings.html", "Listings")]  # phone tab bar, same labels as the desktop menu (the logo is the Home link)
 
 def header(active):
     links = "".join(f'<a href="{h}"{" class=\"active\"" if h == active else ""}>{t}</a>' for h, t in NAV)
@@ -143,7 +143,7 @@ def header(active):
     return f'''<header class="nav-wrap">
   <nav class="nav-pill"><a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Nestlewood Realty" /></a>{links}</nav>
   <a href="contact.html" class="nav-cta">Let's talk</a>
-  <nav class="tabbar" aria-label="Pages">{"".join(f'<a href="{h}"{" class=\"active\"" if (h == active or (h == "index.html" and not active)) else ""}>{t}</a>' for h, t in [("index.html", "Home")] + TABS)}</nav>
+  <nav class="tabbar" aria-label="Pages">{"".join(f'<a href="{h}"{" class=\"active\"" if h == active else ""}>{t}</a>' for h, t in TABS)}</nav>
 </header>'''
 
 FOOTER = f'''<footer class="foot">
@@ -209,7 +209,12 @@ def bg(scene, photo=None):
     # a real photo (slow zoom) if we have one, otherwise an animated mountain scene
     return f'<div class="photo-bg" style="background-image:url(\'{photo}\')"></div>' if photo else f'<div class="scene" data-scene="{scene}"></div>'
 
-def page_hero(crumb, title_html, sub, scene, photo=None, video=None):
+# Still photo shown behind each hero video. Phones that refuse to autoplay (iPhone Low Power Mode,
+# data saver) show this photo instead of the video.
+STILLS = {"beach": "images/stills/beach.jpg", "lake": "images/stills/lake.jpg"}
+
+def page_hero(crumb, title_html, sub, scene, photo=None, video=None, still=None):
+    photo = photo or still or STILLS.get(video)
     fog = "" if photo else '<div class="fog f1"></div><div class="fog f2"></div>'
     return f'''<section class="page-hero"><div class="frame">
   {bg(scene, photo)}{(f'<video class="hero-video" data-src="{video if video.startswith("http") else f"videos/{video}.mp4"}" muted loop playsinline autoplay hidden disablepictureinpicture disableremoteplayback preload="metadata" aria-hidden="true"></video>' if video else '')}{fog}<div class="shade"></div>
@@ -348,7 +353,7 @@ COUNTERS = '''<div class="counters reveal">
 page("index.html", "Nolan Herman, REALTOR® | Nestlewood Realty | Hickory, NC", "", f'''
 <section class="hero" id="top">
   <div class="frame">
-    <div class="scene" data-scene="sunset"></div>
+    <div class="photo-bg" style="background-image:url('images/stills/charlotte.jpg')"></div>
     <video class="hero-video" data-src="https://videos.pexels.com/video-files/33464075/14238297_1920_1080_30fps.mp4" muted loop playsinline autoplay hidden disablepictureinpicture disableremoteplayback preload="metadata" aria-hidden="true"></video>
     <div class="fog f1"></div><div class="fog f2"></div><div class="fog f3"></div><div class="shade"></div>
     <div class="trace-line" aria-hidden="true"><span class="chip"><i></i> Serving Hickory &amp; Charlotte</span></div>
@@ -447,7 +452,7 @@ page("buy.html", "Buy a Home | Nolan Herman, REALTOR®", "buy.html", f'''
 
 # ================= SELL =================
 page("sell.html", "Sell Your Home | Nolan Herman, REALTOR®", "sell.html", f'''
-{page_hero("Sell", "Sell your <em>home.</em>", "Smart pricing, professional photos, and social media marketing that puts your home in front of the right buyers.", "dusk", video="https://videos.pexels.com/video-files/10215996/10215996-hd_1080_1920_30fps.mp4")}
+{page_hero("Sell", "Sell your <em>home.</em>", "Smart pricing, professional photos, and social media marketing that puts your home in front of the right buyers.", "dusk", video="https://videos.pexels.com/video-files/10215996/10215996-hd_1080_1920_30fps.mp4", still="images/stills/mountains.jpg")}
 <section class="statement"><div class="wrap">
   <p class="eyebrow reveal">Results</p>
   <h2 class="words" style="max-width:1000px">Every one of my listings has sold. I launch your home like a product, so buyers compete for <em>it.</em></h2>
