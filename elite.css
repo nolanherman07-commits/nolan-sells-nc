@@ -557,7 +557,6 @@ p { text-wrap: pretty; }
 .rw-c4 .rw-track { animation-duration: 66s; }
 @keyframes rwUp { from { transform: translateY(0); } to { transform: translateY(calc(-50% - 11px)); } }
 @keyframes rwDown { from { transform: translateY(calc(-50% - 11px)); } to { transform: translateY(0); } }
-.rw:hover .rw-track { animation-play-state: paused; }
 .rw-card { margin: 0; background: #ebe3d8; color: #2a2622; border-radius: 16px; padding: 26px 24px 22px; box-shadow: 0 20px 40px rgba(0,0,0,.45); }
 .rw-stars { color: var(--accent, #f78d2d); font-size: 13px; letter-spacing: 3px; }
 .rw-card blockquote { font-family: "Instrument Serif", Georgia, serif; font-size: 25px; line-height: 1.18; margin: 14px 0 18px; padding: 0; border: 0; color: #2a2622; }
