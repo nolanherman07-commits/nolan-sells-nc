@@ -1,6 +1,9 @@
 # Builds every page of the Elite site. Run: python3 _build/build.py
-import os, html, json
+import os, html, json, hashlib
 os.chdir(os.path.dirname(os.path.abspath(__file__)) + "/..")
+# Version tags so browsers fetch fresh CSS/JS whenever those files change.
+V_CSS = hashlib.md5(open("elite.css", "rb").read()).hexdigest()[:8]
+V_JS = hashlib.md5(open("elite.js", "rb").read()).hexdigest()[:8]
 E = html.escape
 
 PHONE, TEL, EMAIL = "828-404-5335", "+18284045335", "nolan@nestlewoodrealty.com"
@@ -192,7 +195,7 @@ def page(fname, title, active, body, curtain=False, desc=DEFAULT_DESC):
 <link rel="icon" href="images/tree-icon.png" /><link rel="apple-touch-icon" href="images/tree-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="elite.css" />
+<link rel="stylesheet" href="elite.css?v={V_CSS}" />
 </head>
 <body{"" if curtain else ' class="page-fade"'}>
 {'<div class="curtain" aria-hidden="true"><img src="images/logo.png" alt="" /></div>' if curtain else ""}
@@ -200,7 +203,7 @@ def page(fname, title, active, body, curtain=False, desc=DEFAULT_DESC):
 {header(active)}
 {body}
 {FOOTER}
-<script src="elite.js"></script>
+<script src="elite.js?v={V_JS}"></script>
 </body>
 </html>'''
     open(fname, "w").write(doc)
