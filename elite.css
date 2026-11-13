@@ -518,3 +518,5 @@ p { text-wrap: pretty; }
 @media (hover: none) {
   footer nav a, footer .f-links a, .foot a, .pill.sm { min-height: 44px; display: inline-flex; align-items: center; }
 }
+/* Small phones: keep the five tab labels inside the bar */
+@media (max-width: 360px) { .tabbar a { font-size: .7rem; padding-left: 0; padding-right: 0; letter-spacing: 0; } .tabbar a:first-child, .tabbar a:last-child { padding: 0 .35rem; } }
