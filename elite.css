@@ -409,6 +409,24 @@ em { font-style: italic; color: var(--accent); }
 .tools .tool { transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s, border-color .5s, opacity 1.1s ease; }
 .tools .tool.reveal.in:hover { transform: scale(1.045); box-shadow: 0 30px 60px rgba(0,0,0,.35); border-color: rgba(247,141,45,.6); }
 
+/* ===== Seasonal background for the lead-tool section (season is set by elite.js from today's date) ===== */
+.tools.season-fall .stars, .tools.season-spring .stars { display: none; }
+.season-fx { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+.season-fx span { position: absolute; animation: seasonFall linear infinite; will-change: transform; }
+.season-fx i { display: block; animation: seasonSway ease-in-out infinite alternate; }
+@keyframes seasonFall { to { transform: translate3d(var(--dx), var(--fall), 0); } }
+@keyframes seasonSway { from { transform: translateX(-14px) rotate(-50deg); } to { transform: translateX(14px) rotate(70deg); } }
+.season-fall .season-fx i { border-radius: 2px 70% 2px 70%; }
+.season-spring .season-fx i { border-radius: 70% 4px 70% 4px; }
+.season-winter .season-fx i { border-radius: 50%; filter: blur(.4px); animation-name: seasonDrift; }
+@keyframes seasonDrift { from { transform: translateX(-10px); } to { transform: translateX(10px); } }
+.season-summer .season-fx span { animation: seasonWander ease-in-out infinite alternate; }
+.season-summer .season-fx i { border-radius: 50%; box-shadow: 0 0 8px 3px rgba(255,233,138,.75); animation-name: seasonGlow; }
+@keyframes seasonWander { to { transform: translate3d(var(--dx), var(--dy), 0); } }
+@keyframes seasonGlow { from { opacity: .05; } to { opacity: 1; } }
+.tools.fx-paused .season-fx span, .tools.fx-paused .season-fx i { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .season-fx { display: none; } }
+
 /* ===== One-line review strip ===== */
 .quote-strip { padding: 4.2rem 0; background: var(--ink); color: #fff; }
 .qs-inner { text-align: center; }
